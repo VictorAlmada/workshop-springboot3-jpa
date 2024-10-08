@@ -17,10 +17,10 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Getter
-@EqualsAndHashCode (of = "id")
+@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
+@Table(name = "tb_product")
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// attributes
 	@Setter
@@ -29,14 +29,25 @@ public class Category implements Serializable {
 	private Long id;
 	@Setter
 	private String name;
+	@Setter
+	private String description;
+	@Setter
+	private Double price;
+	@Setter
+	private String imgUrl;
 	
 	@Transient
-	private Set<Product> products = new HashSet<>();
-	
+	private Set<Category> categories = new HashSet<>();
+
 	// constructor with fields
-	public Category(Long id, String name) {
+	public Product(Long id, String name, String description, Double price, String imgUrl) {
 		this.id = id;
 		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.imgUrl = imgUrl;
 	}
+	
+	
 	
 }
